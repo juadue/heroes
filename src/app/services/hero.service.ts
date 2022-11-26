@@ -18,7 +18,7 @@ export class HeroService {
   constructor(private http: HttpClient,
     private messageService: MessageService) { }
 
-    private heroesUrl = 'http://localhost:8080/api/v1/heroes';  // URL to web api
+    private heroesUrl = 'https://6341803c16ffb7e275d2acdf.mockapi.io/api/v1/heroes';  // URL to web api
 
     /** Log a HeroService message with the MessageService */
     private log(message: string) {
@@ -71,7 +71,7 @@ export class HeroService {
         catchError(this.handleError<Hero>('deleteHero'))
       );
 
-      
+
 }
 
 
@@ -85,7 +85,7 @@ export class HeroService {
     }
 
     /** PUT: update the hero on the server */
-updateHero(hero: Hero): Observable<any> {  
+updateHero(hero: Hero): Observable<any> {
   const url = `${this.heroesUrl}/${hero.id}`;
   return this.http.put(url, hero, this.httpOptions).pipe(
     tap(_ => this.log(`updated hero id=${hero.id}`)),
